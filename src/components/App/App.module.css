@@ -1,3 +1,5 @@
+/* src/components/App/App.module.css */
+
 .app {
     width: 90%;
     max-width: 1280px;
@@ -29,3 +31,36 @@
     background-color: #0b5ed7;
   }
   
+.statusBox,
+.statusBoxError {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 260px;
+  padding: 20px 28px;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
+/* Loading */
+.statusBox {
+  border-color: #3b82f6; /* синій */
+  color: #1e40af;
+}
+
+/* Error */
+.statusBoxError {
+  border-color: #ef4444; /* червоний */
+  color: #991b1b;
+}

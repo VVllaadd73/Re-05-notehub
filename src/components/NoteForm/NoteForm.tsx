@@ -2,13 +2,13 @@
 
 import css from './NoteForm.module.css'
 
-export default function NoteForm() {
+export default function NoteForm({onClose}: {onClose: () => void}) {
   return (
-    <form className={css.form}>
+    <form className={css.form} >
       <div className={css.formGroup}>
         <label htmlFor="title">Title</label>
         <input id="title" type="text" name="title" className={css.input} />
-        <span ta-name="title" className={css.error} />
+        <span data-name="title" className={css.error} />
       </div>
 
       <div className={css.formGroup}>
@@ -35,7 +35,7 @@ export default function NoteForm() {
       </div>
 
       <div className={css.actions}>
-        <button type="button" className={css.cancelButton}>
+        <button type="button" className={css.cancelButton} onClick={onClose}>
           Cancel
         </button>
         <button

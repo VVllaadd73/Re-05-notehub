@@ -8,7 +8,8 @@ import Modal from '../Modal/Modal.tsx';
 import NoteForm from '../NoteForm/NoteForm.tsx';
 import Pagination from '../Pagination/Pagination.tsx';
 import SearchBox from '../SearchBox/SearchBox.tsx'
-import css from './App.module.css'
+import Loader from '../Loader/Loader.tsx';
+import css from './App.module.css';
 
 import { fetchNotes } from '../../services/noteService.ts'; 
 import NoteList from "../NoteList/NoteList.tsx";
@@ -30,10 +31,6 @@ export default function App() {
   });
 
   const totalPages = data ? data.totalPages : 1;
-
-  if (isLoading) {
-    return <p>Loading notes...</p>;
-  }
 
   if (isError) {
     return <p>There was an error, please try again.</p>;
@@ -58,10 +55,11 @@ export default function App() {
           Create note +
         </button>
       </header>
+      {isLoading && <Loader />}
       {data && <NoteList notes={data.notes} />}
       {isModalOpen && (
-        <Modal onClose={() => handleCloseModal}>
-          <NoteForm onClose={() => handleCloseModal} />
+        <Modal onClose={handleCloseModal}>
+          <NoteForm onClose={handleCloseModal} />
         </Modal>
       )}
     </div>

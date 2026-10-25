@@ -1,5 +1,6 @@
 // src/services/noteService.ts
 
+import type { OrderFormValues } from '../types/note.ts'
 import type { Note, Notes, FetchProps } from '../types/note.ts'
 import axios from 'axios';
 
@@ -24,13 +25,14 @@ export async function fetchNotes({ page, searchQuery }: FetchProps): Promise<Not
   return response.data;
 }
 
-export async function createNote(note: Note) {
+export async function createNote(note: OrderFormValues) {
   const { token, API_URL } = dataURL();
   const response = await axios.post<Note>(API_URL, note, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-  });
+  );
   return response.data;
 }
 

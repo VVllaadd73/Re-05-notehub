@@ -18,3 +18,9 @@ export interface FetchProps {
   page: number;
   searchQuery: string;
 }
+
+export interface OrderFormValues {
+  title: string;
+  content: string;
+  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+}
